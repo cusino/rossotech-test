@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Country;
+use App\Models\User;
 
 class CountryController extends Controller
 {
@@ -47,15 +48,17 @@ class CountryController extends Controller
         return redirect()->route('countries.index');
     }
     
-    public function destroy(Country $country)
+    public function destroy($id)
     {
-        // Verifica che il paese non sia in uso
-        if ($country->users()->exists()) {
-            return redirect()->route('countries.index')->with('error', 'Il paese è in uso e non può essere eliminato.');
+        $country = Country::findOrFail($id);
+    
+        if (User::where('country_id', $id)->exists()) {
+            return redirect()->route('countries.index')->with('error', 'Impossibile eliminare la nazione. È attualmente utilizzata.');
         }
     
         $country->delete();
-        return redirect()->route('countries.index');
+    
+        return redirect()->route('countries.index')->with('success', 'Nazione eliminata con successo!');
     }
     
     public function add()

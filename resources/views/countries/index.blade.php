@@ -14,6 +14,7 @@
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Codice ISO</th>
+                    <th>Azione</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,14 @@
                         <td>{{ $country->id }}</td>
                         <td>{{ $country->name }}</td>
                         <td>{{ $country->iso_code }}</td>
+                        <td>
+                            <a href="{{ route('countries.edit', $country->id) }}" class="btn btn-primary">Modifica</a>
+                            <form action="{{ route('countries.destroy', $country->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Sei sicuro di voler eliminare questa nazione?')">Elimina</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
