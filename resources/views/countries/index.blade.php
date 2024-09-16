@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+<a href="{{ route('countries.create') }}" class="btn btn-success">Aggiungi Nuova Nazione</a>
     <h1>Lista delle Nazioni</h1>
 
     @if($countries->isEmpty())

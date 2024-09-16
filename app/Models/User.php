@@ -59,7 +59,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserMeta::class);
     }
-
+    
     public function country()
     {
         return $this->belongsTo(Country::class);

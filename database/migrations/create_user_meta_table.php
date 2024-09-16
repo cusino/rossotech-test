@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('user_metas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('surname');
             $table->string('address')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('city')->nullable();

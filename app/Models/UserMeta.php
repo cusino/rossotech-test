@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserMeta extends Model
 {
-    protected $fillable = ['user_id', 'address', 'postal_code', 'city', 'province', 'country_id'];
+    protected $fillable = ['user_id', 'address', 'postal_code', 'city', 'province', 'country_id', 'surname'];
 
     public function user()
     {
@@ -16,6 +16,6 @@ class UserMeta extends Model
 
     public function country()
     {
-        return $this->belongsTo(Country::class);
+        return $this->belongsTo(Country::class, 'country_id');
     }
 }
