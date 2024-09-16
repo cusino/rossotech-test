@@ -15,12 +15,13 @@ class UserController extends Controller
     
     public function show(User $user)
     {
+        $user = User::with('userMeta', 'country')->findOrFail($user->id);
         return view('users.show', compact('user'));
     }
     
     public function edit(User $user)
     {
-        $this->authorize('update', $user); // Autorizzazione per limitare l'accesso
+        //$this->authorize('update', $user); // Autorizzazione per limitare l'accesso
         return view('users.edit', compact('user'));
     }
     

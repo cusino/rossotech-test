@@ -13,10 +13,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <h1>Lista Utenti</h1>
-                    <div id="user-list">
-                        <user-list :users="{{ $users }}"></user-list>
-                    </div>
                 </div>
             </div>
         </div>

@@ -20,6 +20,8 @@
                     <td>{{ $user->email }}</td>
                     <td>
                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">Visualizza</a>
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Modifica</a>
+                        <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">Elimina</a>
                     </td>
                 </tr>
             @endforeach

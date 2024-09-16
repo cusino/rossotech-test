@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Country;
 
 class CountryController extends Controller
 {
@@ -57,4 +58,9 @@ class CountryController extends Controller
         return redirect()->route('countries.index');
     }
     
+    public function add()
+    {
+        return view('countries.add');
+    }
+
 }

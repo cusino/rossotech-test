@@ -55,4 +55,14 @@ class User extends Authenticatable
         return $this->roles()->where('name', 'Admin')->exists();
     }    
 
+    public function userMeta()
+    {
+        return $this->hasOne(UserMeta::class);
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
 }
