@@ -21,3 +21,4 @@ Route::get('/countries/add', [CountryController::class, 'add'])->middleware('aut
 Route::get('/countries/create', [CountryController::class, 'create'])->name('countries.create');
 Route::post('/countries', [CountryController::class, 'store'])->name('countries.store');
 Route::delete('/countries/{id}', [CountryController::class, 'destroy'])->name('countries.destroy');
+Route::put('/countries/{id}', [CountryController::class, 'update'])->name('countries.update');

@@ -36,16 +36,22 @@ class CountryController extends Controller
         return view('countries.edit', compact('country'));
     }
     
-    public function update(Request $request, Country $country)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'iso_code' => 'required|unique:countries,iso_code,' . $country->id,
+        // Trova la nazione da aggiornare
+        $country = Country::findOrFail($id);
+        
+        // Convalida i dati
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'iso_code' => 'required|string|max:10',
         ]);
-    
-        $country->update($request->all());
-    
-        return redirect()->route('countries.index');
+
+        // Aggiorna la nazione
+        $country->update($validatedData);
+
+        // Reindirizza con messaggio di successo
+        return redirect()->route('countries.index')->with('success', 'Nazione aggiornata con successo!');
     }
     
     public function destroy($id)
