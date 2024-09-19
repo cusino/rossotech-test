@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    @if (Auth::check() && Auth::user()->role && Auth::user()->role->name === 'admin')
+    @if (Auth::check() && Auth::user()->role == 'admin')
         <a href="{{ route('countries.index') }}" class="btn btn-success">Visualizza Nazioni</a>
     @endif
 
