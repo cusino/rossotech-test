@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    @if (Auth::check() && Auth::user()->role == 'admin')
+    @if (Auth::check() && Auth::user()->hasRole('admin'))
         <a href="{{ route('countries.index') }}" class="btn btn-success">Visualizza Nazioni</a>
     @endif
 
@@ -24,10 +24,10 @@
                     <td>{{ $user->email }}</td>
                     <td>
                         <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">Visualizza</a>
-                        @if ((Auth::check() && Auth::id() === $user->id) || (Auth::check() && Auth::user()->role && Auth::user()->role->name === 'admin'))
+                        @if ((Auth::check() && Auth::id() === $user->id) || (Auth::check() && Auth::user()->hasRole('admin')))
                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Modifica</a>
                         @endif
-                        @if ((Auth::check() && Auth::id() != $user->id) && (Auth::check() && Auth::user()->role && Auth::user()->role->name === 'admin'))
+                        @if ((Auth::check() && Auth::id() != $user->id) && (Auth::check() && Auth::user()->hasRole('admin')))
                             <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

@@ -11,7 +11,7 @@
         <div class="card-body">
             <p><strong>ID:</strong> {{ $user->id }}</p>
             <p><strong>Nome:</strong> {{ $user->name }}</p>
-            <p><strong>Cognome:</strong> {{ $user->userMeta->surname }}</p>
+            <p><strong>Cognome:</strong> {{ $user->userMeta->surname ?? 'N/A'}}</p>
             <p><strong>Email:</strong> {{ $user->email }}</p>
             <p><strong>Nazione:</strong> {{ $user->userMeta->country ? $user->userMeta->country->name : 'Nessuna nazione associata' }}</p>
             

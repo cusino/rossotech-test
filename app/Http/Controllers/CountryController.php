@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Country;
 use App\Models\User;
+use App\Models\UserMeta;
 
 class CountryController extends Controller
 {
@@ -58,7 +59,7 @@ class CountryController extends Controller
     {
         $country = Country::findOrFail($id);
     
-        if (User::where('country_id', $id)->exists()) {
+        if (UserMeta::where('country_id', $id)->exists()) {
             return redirect()->route('countries.index')->with('error', 'Impossibile eliminare la nazione. È attualmente utilizzata.');
         }
     

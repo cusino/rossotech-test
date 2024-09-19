@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <label for="surname">Cognome</label>
-            <input type="text" class="form-control" id="surname" name="surname" value="{{ old('surname', $user->surname) }}" required>
+            <input type="text" class="form-control" id="surname" name="surname" value="{{ old('surname', $user->userMeta->surname) }}" required>
         </div>
 
         <div class="form-group">
