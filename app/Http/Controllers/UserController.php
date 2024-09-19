@@ -38,7 +38,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,',
             'address' => 'nullable|string|max:255',
             'postal_code' => 'nullable|string|max:20',
             'city' => 'nullable|string|max:255',
@@ -67,7 +67,7 @@ class UserController extends Controller
         $userMeta->save();
 
         // Reindirizza alla pagina di visualizzazione dell'utente aggiornato con messaggio di successo
-        return redirect()->route('users.show', $user->id)->with('success', 'Utente aggiornato con successo!');
+        return redirect()->route('users.edit', $user->id)->with('success', 'Utente aggiornato con successo!');
     }
     
     public function destroy($id)
